@@ -1,0 +1,188 @@
+<apex:page controller="PortalUploadController">
+    <apex:includeScript value="{!URLFOR($Resource.jsforce)}" />
+
+    <br/>
+    <h1>Upload App Name:</h1>
+    <br/>
+    <input type="text" name="uploadappname" id="uploadappname" value="CustomerPortalFileUploadApp" style="width:400px"/>
+    <br/>
+    <br/>
+    <h1>Upload User Named Credential Name:</h1>
+    <br/>
+    <input type="text" name="uploadusernamedcredential" id="uploadusernamedcredential" value="PortalUploadCredential" style="width:400px"/>
+    <br/>
+    <br/>
+    <h1>Upload User Username:</h1>
+    <br/>
+    <input type="text" name="uploadusername" id="uploadusername" style="width:400px"/>
+    <br/>
+    <br/>
+    <h1>Upload User Password:</h1>
+    <br/>
+    <input type="text" name="uploadpassword" id="uploadpassword" style="width:400px"/>
+    <br/>
+    <br/>
+    <h1>Community URL to be added to CORS:</h1>
+    <br/>
+    <input type="text" name="communityurl" id="communityurl" style="width:400px"/>
+    <br/>
+    <br/>
+
+    <input type="button" value="Configure Portal Upload User" onclick="configurePortalUploadUser();" />
+
+    <br/>
+    <br/>
+    <textarea type="text" name="status" id="status" style="width:400px;height:100px" disabled="true"/>
+    <br/>
+    <br/>
+
+    <script>
+        var conn = new jsforce.Connection({ accessToken: '{!$Api.Session_Id}', version:'41.0' });
+        var consumerSecret = 'DB47A502DAEB45F89D0A8DBF648E984B';
+        var namespaceprefix = '';
+
+        setNamespace();
+        setUserName();
+        setPassword();
+        setCommunityUrl();
+
+        function createConnectedApp () {
+            var portalFileUploadApp = document.getElementById("uploadappname").value;
+            var portalFileUploadAppMetadata = [{
+                contactEmail: 'test@test.com',
+                description: 'Portal OAuth',
+                fullName: portalFileUploadApp,
+                label: portalFileUploadApp,
+                oauthConfig: {
+                    callbackUrl: 'https://login.salesforce.com/services/oauth2/authorize',
+                    consumerSecret: consumerSecret,
+                    scopes: [
+                        'Full',
+                        'RefreshToken'
+                    ]
+                }
+            }];
+            conn.metadata.delete('ConnectedApp', namespaceprefix + portalFileUploadApp, function (err, readresult) {
+                conn.metadata.create('ConnectedApp', portalFileUploadAppMetadata, function (err, readresult) {
+                    if (err) {
+                        return console.error(err);
+                    } else {
+                        conn.metadata.read('ConnectedApp', namespaceprefix + portalFileUploadApp, function (err, readresult) {
+                            console.log(readresult);
+                            document.getElementById("status").value += 'Created Connected App \n';
+                            updateSystemProperties(readresult);
+                        });
+                    }
+                });
+            });
+        }
+
+        function createNamedCredential() {
+            var uploadNamedCredentialName = document.getElementById("uploadusernamedcredential").value;
+            conn.metadata.delete('NamedCredential', namespaceprefix + uploadNamedCredentialName, function (err, readresult) {
+                var namedCredentialMetadata = [{
+                    endpoint: "https://login.salesforce.com/services/oauth2/token",
+                    fullName: uploadNamedCredentialName,
+                    label: uploadNamedCredentialName,
+                    principalType: "NamedUser",
+                    protocol: "Password",
+                    username: document.getElementById("uploadusername").value,
+                    password: document.getElementById("uploadpassword").value,
+                    allowMergeFieldsInBody: true,
+                    allowMergeFieldsInHeader: true,
+                    generateAuthorizationHeader: false
+                }];
+                conn.metadata.create('NamedCredential', namedCredentialMetadata, function (err, readresult) {
+                    console.log(readresult);
+                    if (err) {
+                        return console.error(err);
+                    }
+                    document.getElementById("status").value += 'Created Named Credential \n';
+                    console.log('Created Named Credential: ' + uploadNamedCredentialName);
+                });
+            });
+        }
+
+        function addCORS() {
+            var communityCorsWhitelistDevName = 'PortalCommunityUploadApp';
+            conn.metadata.delete('CorsWhitelistOrigin', namespaceprefix + communityCorsWhitelistDevName, function (err, readresult) {
+                var corsMetadata = [{
+                    fullName: communityCorsWhitelistDevName,
+                    urlPattern: document.getElementById("communityurl").value
+                }];
+                conn.metadata.create('CorsWhitelistOrigin', corsMetadata, function (err, readresult) {
+                    console.log(readresult);
+                    if (err) {
+                        return console.error(err);
+                    }
+                    document.getElementById("status").value += 'Created Cors Entry \n';
+                    console.log('Created Cors Entry ');
+                });
+            });
+        }
+
+        function configurePortalUploadUser () {
+            document.getElementById("status").value += '';
+            createNamedCredential();
+            createConnectedApp();
+            addCORS();
+        }
+
+        function updateSystemProperties (readresult) {
+            console.log('Update System Properties');
+            Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.PortalUploadController.setSystemProperties}',
+                    document.getElementById("uploadusernamedcredential").value,
+                    document.getElementById("uploadusername").value,
+                    consumerSecret,
+                    readresult.oauthConfig.consumerKey,
+                    function(result, event){
+                        if(event.status){
+                            document.getElementById("status").value += 'Updated System Properties \n';
+                            console.log('success');
+                        } else{
+                            console.log(event.message);
+                        }
+                    },
+                    {escape: true}
+            );
+        }
+
+        function setUserName () {
+            Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.PortalUploadController.getUserName}',
+                    function(result, event){
+                        uploadusername = result;
+                        document.getElementById("uploadusername").value = result;
+                    },
+                    {escape: true}
+            );
+        }
+
+        function setCommunityUrl () {
+            Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.PortalUploadController.getCommunityUrl}',
+                    function(result, event){
+                        document.getElementById("communityurl").value = result;
+                    },
+                    {escape: true}
+            );
+        }
+
+        function setNamespace () {
+            Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.PortalUploadController.getNamespace}',
+                    function(result, event){
+                        namespaceprefix = result;
+                    },
+                    {escape: true}
+            );
+        }
+
+        function setPassword () {
+            document.getElementById("uploadpassword").value = 'nCino123';
+        }
+
+    </script>
+
+</apex:page>

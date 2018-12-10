@@ -1,0 +1,38 @@
+<apex:component controller="UITemplateGeneratorAppController">
+	<script>
+		(function(){
+			'use strict';
+			angular.module('ncDataProviders')
+			.config(function(configProvider){
+				configProvider.set({
+					salesforceSessionId: '{!$API.Session_Id}',
+					configureObjectForUIAction: '{!$RemoteAction.UITemplateGeneratorAppController.configureObjectForUI}'
+				});
+				configProvider.setHtmlEncoded({
+					sObjects: {!allSObjects}
+				});
+			})
+			.config(function(labelProvider){
+				labelProvider.setLabels({
+					Namespace : '{!$Label.Picklist_Header_Namespace}',
+					Object : '{!$Label.Object}',
+					UI_Template_Generator_Header : '{!$Label.UI_Template_Generator_Header}',
+					UI_Template_Generator_Help_Text : "{!$Label.UI_Template_Generator_Help_Text}",
+					UI_Template_Generator_Success_Message : "{!$Label.UI_Template_Generator_Success_Message}",
+					Generate : '{!$Label.Generate}',
+					Include_Secondary_Routes: '{!$Label.Include_Secondary_Routes}',
+					Standard_Ncino_UI_Template_Example: '{!$Label.Standard_Ncino_UI_Template_Example}',
+					Tertiary_Only_Page_Template_Example: '{!$Label.Tertiary_Only_Page_Template_Example}',
+					UI_Template_Generator_Error_Message : "{!$Label.UI_Template_Generator_Error_Message}",
+					UI_Template_Generator_Error_Reason : "{!$Label.UI_Template_Generator_Error_Reason}",
+					Default_App_Field: '{!$Label.Default_App_Field}',
+					Group_With_Name: '{!$Label.Group_With_Name}',
+					Route_Configuration: '{!$Label.Route_Configuration}',
+					Route_With_Name : "{!$Label.Route_With_Name}",
+					Visualforce_Page : "{!$Label.Visualforce_Page}",
+					Default_App_Field_Already_Exists : "{!$Label.Default_App_Field_Already_Exists}"
+				});
+			});
+		})();
+	</script>
+</apex:component>

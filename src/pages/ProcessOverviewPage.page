@@ -1,0 +1,330 @@
+<apex:page standardController="LLC_BI__Loan__c" extensions="ProcessOverviewController" standardStyleSheets="false">
+
+<head>
+<style type="text/css">
+a img { border: none; }
+a, a:hover{
+outline:none;
+}
+.hidden{
+display:none;
+}
+.clearDiv{
+    clear:both;
+}
+.center{
+    display:block;
+    margin:0px auto;
+}
+.floatleft{
+    float:left;
+}
+.floatright{
+    float:right;
+}
+
+.padding{
+    padding:10px;
+}
+.spacer{
+    height:20px;
+    display:block;
+    }
+.smspacer{
+    height:12px;
+    display:block;
+    }
+    
+.marginleft{
+    margin-left:20px;
+}
+.marginright{
+    margin-right:20px;
+}
+.rounded6{
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+overflow:hidden;
+}
+
+.rounded4{
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+overflow:hidden;
+}
+
+.shadow{
+text-shadow: 1px 1px 1px #767676;
+filter: dropshadow(color=#767676, offx=1, offy=1); 
+}
+
+.ltgrey{
+background-color:#f8f8f8;
+}
+.border{
+    border: 1px solid #ebebeb;
+}
+
+#sfhome {
+    background-image: url('{!URLFOR($Resource.processViewImages, "PHP_icon_circleback.png")}');
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height:500px;
+    width:700px;
+    font-family: Arial, Helvetica, sans-serif;    
+}
+
+.sficon{
+    width:100px;
+    min-height:125px;
+    background-repeat: no-repeat;
+    background-position: center 0px;
+    margin: 0px;
+    padding: 0px;
+    overflow: visible;
+    position: absolute;
+    z-index: 10;
+    text-align:center;
+}
+
+.sficon .sfnumber{
+    width:44px;
+    height:43px;
+    line-height:44px;
+    background-image: url('{!URLFOR($Resource.processViewImages, "PHP_icon_circlenum.png")}');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    padding: 0px;
+    overflow: visible;
+    position: relative;
+    z-index: 11;
+    color:#fff;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:-.1pt;
+    text-align:center;
+    display:block;
+    left: -6px;
+    top: -16px;
+}
+
+.sficon h4 a{
+font-size:13px;
+line-height:16px;
+color:#202020;
+display:block;
+position:relative;
+top:20px; /* 12px */
+text-decoration:none;
+margin:0px;
+padding:0px;
+}
+#sftotals{
+width:680px;
+font-family: Arial, Helvetica, sans-serif;    
+}
+#sftotals ul{
+display:block;
+margin:0px;
+padding:0px;
+
+}
+#sftotals li{
+float:left;
+margin:0px;
+padding:0px;
+width:225px;
+}
+
+#sftotals li a.sftotal{
+    display:block;
+    width:172px;
+    height:30px;
+    background-repeat: no-repeat;
+    background-position: 6px 6px;
+    margin:0px;
+    padding-top: 4px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+    padding-left: 38px;
+    color:#202020;
+    text-decoration:none;
+    font-weight:bold;
+    line-height:30px;
+}
+#sftotals li a.sftotal span{
+    float:right;
+    font-size:21px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-style: italic;
+    font-weight: normal;
+    letter-spacing: -0.3pt;    
+}
+#sftotals li a.won{
+    background-color:#f4ffe5;
+}
+#sftotals li a.won span{
+    color:#006666;
+}
+
+#sftotals li a.lost{
+    background-color:#f6dfd7;
+}
+#sftotals li a.lost span{
+    color:#c20308;
+}
+
+#sftotals li a.hold{
+    background-color:#fdf1d1;
+}
+#sftotals li a.hold span{
+    color:#e5911f;
+}
+
+h1 {
+font-size:26px;
+line-height:28px;
+}
+
+.red, a.checkon:hover, a.checkoff:hover{
+color:#c41230;
+}
+
+.shadow{
+    text-shadow: 1px 1px 1px #767676;
+    filter: dropshadow(color=#767676, offx=1, offy=1); 
+}
+
+.bluevertsep{
+    display: block;
+    width: 1px;
+    margin-right: 12px;
+    padding-right: 12px;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: #b3c1cb;
+}
+
+#container {
+    width: 700px;
+    min-height: 500px;
+    position: relative;
+    margin-top: 33px;
+}
+</style>
+
+<apex:includeScript value="{!URLFOR($Resource.LLC_BI__llc_web_ui, 'jquery/js/jquery.min.js')}"/>
+    <script>
+        $(document).ready(function(){
+            getOverviewSettings();
+        });
+        
+        var stages = {!stagesJson};
+        var stageCount = {!stageCountJson};
+        var labelsMap = {};
+        var resourcesUrls = {};
+        
+        var getOverviewSettings = function(){
+        	var flows = [];
+        	var totals = [];
+        	
+        	$.each(stages, function(i, p){
+        		if (p.Flow_Setting__c == true){
+        			flows.push(p);
+        		} else {
+        			totals.push(p);
+        		}
+        	});
+        	createFlowProcesses(flows);
+        	createTotalsFooter(totals);
+        };
+        
+        var createFlowProcesses = function(flows){
+        	var markup = '';
+            $.each(flows, function(i, p){
+                var url = p.Link_URL__c || '#';
+                var num = stageCount[p.Name];
+                var label = labelsMap[p.Custom_Label_Key__c];
+                var icon = resourcesUrls[p.StaticResourceName__c] + p.IconImageName__c;
+                    
+                markup += '<div class="clearDiv"></div>'+
+                          '<div class="'+ p.IconStyleClass__c +'" style="background-image: url(\''+ icon +'\');">'+
+                              '<div class="sfnumber">'+ num +'</div>'+
+                              '<h4><a href="'+ url +'">'+ label +'</a></h4>'+
+                              '<div class="clearDiv"></div>'+
+                          '</div>';
+            });
+            $('#container').html(markup);
+            distributeFields();
+        };
+        
+        var createTotalsFooter = function(totals){
+            var lis = '';
+            $.each(totals, function(i, t){
+                var url = t.Link_URL__c || '#';
+                var num = stageCount[t.Name];
+                var label = labelsMap[t.Custom_Label_Key__c];
+                var icon = resourcesUrls[t.StaticResourceName__c] + t.IconImageName__c;
+                    
+                lis += '<li>'+
+                           '<a href="'+ url +'" class="sftotal '+ t.IconStyleClass__c +' rounded4" style="background-image: url(\''+ icon +'\')"> '+ label +
+                                '<span>'+ num +'</span>'+
+                           '</a>'+
+                       '</li>';
+             });
+             $('#sfTotalsUL').html(lis);
+        };
+    
+        var distributeFields = function(){
+            var radius = 200;
+            var fields = $('.sficon'), container = $('#container'),
+                width = container.width(), height = container.height(),
+                angle = 130, step = (2*Math.PI) / fields.length;
+            
+            fields.each(function() {
+                var x = Math.round(width/2 + radius * Math.cos(angle) - $(this).width()/2);
+                var y = Math.round(height/2 + radius * Math.sin(angle) - $(this).height()/2);
+                $(this).css({
+                    left: x + 'px',
+                    top: y + 'px'
+                });
+                angle += step;
+            });
+        };
+    </script>
+</head>
+<body>
+    <br />
+    <div class="clearDiv"></div>
+    <div class="clearDiv"></div>
+    <br />
+    
+    <div class="clearDiv" style="height: 20px;"></div>
+    <div class="bluevertsep" style="float: left;"></div>
+    <div id="sfhome" class="rounded6 ltgrey border">
+        <div id="container">
+        </div>
+        <div class="clearDiv"></div>
+    </div> <!--SF HOMEPAGE -->
+    
+    <div class="clearDiv spacer"></div>
+    
+    <div id="sftotals" class="rounded6 ltgrey border padding">
+        <ul id="sfTotalsUL"></ul>
+        <div class="clearDiv"></div>
+    </div>
+    
+    <div id="labels" style="display:none">
+        <apex:repeat value="{!stages}" var="s">
+            <script>
+            	labelsMap.{!s.Custom_Label_Key__c} = '{!$Label[s.Custom_Label_Key__c]}';
+            	resourcesUrls.{!s.StaticResourceName__c} = '{!URLFOR($Resource[s.StaticResourceName__c])}/';
+            </script>
+        </apex:repeat>
+    </div>
+</body>
+
+</apex:page>

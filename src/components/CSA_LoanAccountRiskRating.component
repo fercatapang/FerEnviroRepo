@@ -1,0 +1,70 @@
+<apex:component layout="none" allowdml="true" controller="CSA_LoanAccountRiskRatingController">
+    <apex:includescript value="{!URLFOR($Resource.CSA_Resources, 'Javascript.js')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.CSA_Resources, 'Stylesheet.css')}" />
+
+    <apex:form id="theform">
+        <apex:actionstatus id="loading" onstart="loading(true)" onstop="loading(false)"/>
+        <div class="force messages error" id="errorMessage" />
+
+        <div class="slds force">
+            <div class="slds-form--horizontal">
+                <div class="slds-form-element">
+                    <apex:outputlabel styleclass="slds-form-element__label" 
+                                      value="{!$ObjectType.LLC_BI__Loan__c.fields.Name.Label}" for="loanName" />
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <apex:outputtext id="loanName" styleclass="slds-form-element__static" value="{!loan.Name}" />
+                    </div>
+                </div>
+
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="selectedAccount">
+                        <abbr class="slds-required" title="required">*</abbr>
+                        <apex:outputtext value="{!$ObjectType.LLC_BI__Legal_Entities__c.fields.LLC_BI__Account__c.Label}" />
+                        <apex:outputpanel layout="none" rendered="{!isHelpTextAccount}">
+                            <i class="fa fa-info-circle" title="{!helpTextAccount}" data-toggle="tooltip" data-placement="left"></i>
+                        </apex:outputpanel>
+                    </label>
+                    <div class="slds-form-element__control">
+                        <div class="slds-select_container">
+                            <apex:selectlist id="selectedAccount" styleclass="slds-select" size="1" value="{!selectedAccount}">
+                                <apex:selectoptions value="{!accounts}" />
+                            </apex:selectlist>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="riskRatingTemplate">
+                        <abbr class="slds-required" title="required">*</abbr>
+                        <apex:outputtext value="{!$ObjectType.LLC_BI__Loan__c.fields.Risk_Rating_Template__c.Label}" />
+                        <apex:outputpanel layout="none" rendered="{!isHelpTextRiskTemplate}">
+                            <i class="fa fa-info-circle" title="{!helpTextRiskTemplate}" data-toggle="tooltip" data-placement="left"></i>
+                        </apex:outputpanel>
+                    </label>
+                    <div class="slds-form-element__control">
+                        <div class="slds-select_container">
+                            <apex:inputfield id="riskRatingTemplate" styleclass="slds-select" value="{!loan.Risk_Rating_Template__c}" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-form-element">
+                    <div style="text-align:right;">
+                        <apex:commandbutton value="{!$Label.Risk_Rating_Selector_Save_Button}" styleclass="btn btn-primary"
+                                            action="{!loanRiskRatingSave}" reRender="theform" status="loading" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            jQuery(function() {
+                if('{!errorMessage}' != '') {
+                    jQuery('#errorMessage').append('<label style="cursor: default; padding:15px;" class="alert alert-danger">{!errorMessage}</label>');
+                    setTimeout(function() {
+                        jQuery(".alert-danger").remove();
+                    },10000);
+                }
+            });
+        </script>
+    </apex:form>
+</apex:component>

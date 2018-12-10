@@ -1,0 +1,38 @@
+<apex:page standardController="Account">
+    <apex:outputpanel layout="none" rendered="{!isNull($CurrentPage.parameters.app)}">
+        <nFORCE:Includes enablebootstrap3="true" enablefontawesome="true" enablebs3namespace="true" />
+        <nFORCE:Include_Design_System flavor="vf" />
+        <nFORCE:Include_Design_System flavor="bs3" />
+
+        <apex:sectionheader title="{!$Label.Risk_Rating_Selector_Account_Title}" subtitle="{!$Label.Risk_Rating_Selector_Title}" />
+        &laquo;&nbsp;
+        <a href="/{!Account.Id}">{!$Label.Risk_Rating_Selector_Back_To_Button} {!Account.Name}</a>
+
+        <div class="container-fluid">
+            <div style="width:850px;">
+                <c:CSA_AccountRiskRating />
+            </div>
+        </div>
+    </apex:outputpanel>
+    <apex:outputpanel layout="none" rendered="{!!isNull($CurrentPage.parameters.app)}">
+        <apex:composition template="nFORCE__Template_Heading">
+            <apex:define name="left">
+                <div>
+                    <apex:outputtext value="{!$Label.Risk_Rating_Selector_Title}" />
+                </div>
+            </apex:define>
+        </apex:composition>
+        <apex:composition template="nFORCE__Template_View_1_Column">
+            <apex:define name="column-content">
+                <apex:composition template="nFORCE__Template_View_Container">
+                    <apex:define name="content">
+                        <div class="col-md-12">
+                            <c:CSA_AccountRiskRating />
+                            <c:CSA_GenerateRRRLoading />
+                        </div>
+                    </apex:define>
+                </apex:composition>
+            </apex:define>
+        </apex:composition>
+    </apex:outputpanel>
+</apex:page>

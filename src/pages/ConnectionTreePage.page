@@ -1,0 +1,160 @@
+<!-- Changes to modernize the tree Rob Calfee October 14, 2016 -->
+
+<apex:page standardController="Account" extensions="ConnectionTreeController" showHeader="false"
+    sidebar="false">
+    <style>
+    .facility{
+        background-color: #fff;
+        border: 3px solid rgb(216,221,230);
+        color: rgb(0,112,210) !important;
+        border-radius: 15rem; 
+        text-transform: uppercase;
+        font-weight: bold;
+        
+        
+        width: 20em;
+        font-size: 0.9em;
+        text-align: center;
+        vertical-align: middle;
+        font-family: arial,helvetica;
+        cursor: pointer;
+        <!--  border: 2px solid #b5d9ea;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -webkit-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+            -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+            background-color: #edf7ff;
+            background: -webkit-gradient(linear, left top, left bottom, from(#edf7ff), to(#cde7ee));
+-->
+    }
+    
+div  {
+        color: rgb(0,112,210) !important;
+        }
+        
+ 
+     /* unvisited link */
+a:link {
+    color: rgb(0,112,210) !important;
+}
+
+/* visited link */
+a:visited {
+    color: rgb(0,112,210) !important;
+}
+
+/* mouse over link */
+a:hover {
+    color: rgb(0,112,210) !important;
+}
+
+/* selected link */
+a:active {
+    color: rgb(0,112,210) !important;
+}
+
+    .facility-selected{
+        border: 2px solid #e3ca4b;
+        background-color: #fff7ae;
+        background: -webkit-gradient(linear, left top, left bottom, from(#fff7ae), to(#eee79e));
+    }
+    </style>
+    <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['orgchart']}]}"></script>
+    <div id="chart_div"></div>
+    <script type="text/javascript">
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('string', 'Parent');
+            data.addColumn('string', 'ToolTip');
+
+            data.addRows({!connections});
+
+            var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+            
+            google.visualization.events.addListener(chart, 'select', function(){
+                var accountId = data.getValue(chart.getSelection()[0].row, 0);
+                //window.top.location.href= '/'+accountId;
+                var win = window.open('/'+accountId, '_blank');
+                win.focus();
+            });
+
+            google.visualization.events.addListener(chart, 'ready', function(){
+                chart.setSelection([{row: data.getFilteredRows([{column: 0, value: '{!accountId}'}])}]);
+            });
+
+            chart.draw(data, {
+                    allowHtml:true,
+                    allowCollapse: true,
+                    size: 'medium',
+                    nodeClass: 'facility',
+                    selectedNodeClass: 'facility-selected'});
+        }
+        
+        google.setOnLoadCallback(drawChart);
+    </script>
+</apex:page>
+
+
+<!--
+<apex:page standardController="Account" extensions="ConnectionTreeController" showHeader="false"
+    sidebar="false">
+    <style>
+    .facility{
+        width: 13em;
+        font-size: 0.9em;
+        text-align: center;
+        vertical-align: middle;
+        font-family: arial,helvetica;
+        cursor: pointer;
+        border: 2px solid #b5d9ea;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -webkit-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+            -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+            background-color: #edf7ff;
+            background: -webkit-gradient(linear, left top, left bottom, from(#edf7ff), to(#cde7ee));
+    }
+
+    .facility-selected{
+        border: 2px solid #e3ca4b;
+        background-color: #fff7ae;
+        background: -webkit-gradient(linear, left top, left bottom, from(#fff7ae), to(#eee79e));
+    }
+    </style>
+    <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['orgchart']}]}"></script>
+    <div id="chart_div"></div>
+    <script type="text/javascript">
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('string', 'Parent');
+            data.addColumn('string', 'ToolTip');
+
+            data.addRows({!connections});
+
+            var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+            
+            google.visualization.events.addListener(chart, 'select', function(){
+                var accountId = data.getValue(chart.getSelection()[0].row, 0);
+                //window.top.location.href= '/'+accountId;
+                var win = window.open('/'+accountId, '_blank');
+                win.focus();
+            });
+
+            google.visualization.events.addListener(chart, 'ready', function(){
+                chart.setSelection([{row: data.getFilteredRows([{column: 0, value: '{!accountId}'}])}]);
+            });
+
+            chart.draw(data, {
+                    allowHtml:true,
+                    allowCollapse: true,
+                    size: 'medium',
+                    nodeClass: 'facility',
+                    selectedNodeClass: 'facility-selected'});
+        }
+        
+        google.setOnLoadCallback(drawChart);
+    </script>
+</apex:page>
+-->

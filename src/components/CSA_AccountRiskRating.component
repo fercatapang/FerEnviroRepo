@@ -1,0 +1,51 @@
+<apex:component layout="none" allowdml="true" controller="CSA_AccountRiskRatingController">
+    <apex:includescript value="{!URLFOR($Resource.CSA_Resources, 'Javascript.js')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.CSA_Resources, 'Stylesheet.css')}" />
+
+    <apex:form id="theform">
+        <apex:actionstatus id="loading" onstart="loading(true)" onstop="loading(false)" />
+        <div class="force messages error" id="errorMessage" />
+
+        <div class="slds force">
+            <div class="slds-form--horizontal">
+                <div class="slds-form-element">
+                    <apex:outputlabel styleclass="slds-form-element__label" value="{!$ObjectType.Account.fields.Name.Label}" for="acctName" />
+                    <div class="slds-form-element__control slds-has-divider--bottom">
+                        <apex:outputtext id="acctName" styleclass="slds-form-element__static" value="{!acct.Name}" />
+                    </div>
+                </div>
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="riskRatingTemplate">
+                        <abbr class="slds-required" title="required">*</abbr>
+                        <apex:outputtext value="{!$ObjectType.Account.fields.Risk_Rating_Template__c.Label}" />
+                        <apex:outputpanel layout="none" rendered="{!isHelpTextRiskTemplate}">
+                            <i class="fa fa-info-circle" title="{!helpTextRiskTemplate}" data-toggle="tooltip" data-placement="left"></i>
+                        </apex:outputpanel>
+                    </label>
+                    <div class="slds-form-element__control">
+                        <div class="slds-select_container">
+                            <apex:inputfield id="riskRatingTemplate" styleclass="slds-select" value="{!acct.Risk_Rating_Template__c}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-form-element">
+                    <div style="text-align:right;">
+                        <apex:commandbutton value="{!$Label.Risk_Rating_Selector_Save_Button}" styleclass="btn btn-primary" 
+                                            action="{!accountRiskRatingSave}" rerender="theform" status="loading" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            jQuery(function() {
+                if('{!errorMessage}' != '') {
+                    jQuery('#errorMessage').append('<label style="cursor: default; padding:15px;" class="alert alert-danger">{!errorMessage}</label>');
+                    setTimeout(function() {
+                        jQuery(".alert-danger").remove();
+                    },10000);
+                }
+            });
+        </script>
+    </apex:form>
+</apex:component>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Configuration settings for the process overview page</description>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Show this entry on the display page</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Show this entry on the display page</inlineHelpText>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Custom_Label_Key__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Key to lookup the custom label.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Key to lookup the custom label.</inlineHelpText>
+        <label>Custom Label Key</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Display_Order__c</fullName>
+        <description>Controls the display order on the page, starting at top, vertical position.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Controls the display order on the page, starting at top, vertical position.</inlineHelpText>
+        <label>Display Order</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Flow_Setting__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Define if this is a flow setting or a statistics setting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Define if this is a flow setting or a statistics setting</inlineHelpText>
+        <label>Flow Setting</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IconImageName__c</fullName>
+        <description>This is the name of the resource image in the icon resource bundle.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the name of the resource image in the icon resource bundle. It should look like
+[ResourceName].[IconName] (without the brackets...)</inlineHelpText>
+        <label>IconImageName</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IconStyleClass__c</fullName>
+        <description>This holds the style class name for the icon used in the layout page</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This holds the style class name for the icon used in the layout page</inlineHelpText>
+        <label>IconStyleClass</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Link_URL__c</fullName>
+        <description>This holds the configuration URL link. The user will be taken to this end point when the link is clicked</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the fully qualified Link URL in this field.</inlineHelpText>
+        <label>Link URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Stage__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>This is the name of the loan processing stage. It must match exactly the stage name used in the stage picklist on the loan object.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the name of the loan processing stage. It must match exactly the stage name used in the stage picklist on the loan object.</inlineHelpText>
+        <label>Stage</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>StaticResourceName__c</fullName>
+        <description>Contains the name of the static resource where the icons are packaged</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Contains the name of the static resource where the icons are packaged</inlineHelpText>
+        <label>StaticResourceName</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Process Overview Configuration</label>
+    <visibility>Public</visibility>
+</CustomObject>

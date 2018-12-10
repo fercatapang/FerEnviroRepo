@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Image that will used as the background image of the Customer Portal and Online Application</description>
+    <internalUseOnly>false</internalUseOnly>
+    <name>Customer Portal Background Image</name>
+    <public>true</public>
+</Document>

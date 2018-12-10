@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Process Overview Configuration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Process Overview Configuration</value>
+    </caseValues>
+    <fields>
+        <help><!-- Show this entry on the display page --></help>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <help><!-- Key to lookup the custom label. --></help>
+        <label><!-- Custom Label Key --></label>
+        <name>Custom_Label_Key__c</name>
+    </fields>
+    <fields>
+        <help><!-- Controls the display order on the page, starting at top, vertical position. --></help>
+        <label><!-- Display Order --></label>
+        <name>Display_Order__c</name>
+    </fields>
+    <fields>
+        <help><!-- Define if this is a flow setting or a statistics setting --></help>
+        <label><!-- Flow Setting --></label>
+        <name>Flow_Setting__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the name of the resource image in the icon resource bundle. It should look like
+[ResourceName].[IconName] (without the brackets...) --></help>
+        <label><!-- IconImageName --></label>
+        <name>IconImageName__c</name>
+    </fields>
+    <fields>
+        <help><!-- This holds the style class name for the icon used in the layout page --></help>
+        <label><!-- IconStyleClass --></label>
+        <name>IconStyleClass__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the fully qualified Link URL in this field. --></help>
+        <label><!-- Link URL --></label>
+        <name>Link_URL__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the name of the loan processing stage. It must match exactly the stage name used in the stage picklist on the loan object. --></help>
+        <label><!-- Stage --></label>
+        <name>Stage__c</name>
+    </fields>
+    <fields>
+        <help><!-- Contains the name of the static resource where the icons are packaged --></help>
+        <label><!-- StaticResourceName --></label>
+        <name>StaticResourceName__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

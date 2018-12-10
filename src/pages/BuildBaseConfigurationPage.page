@@ -1,0 +1,26 @@
+<apex:page controller="BuildBaseConfiguration">
+
+    <!-- <nFORCE:Includes enableBootstrap3="true" enableBS3Namespace="true" enableFontAwesome="true" /> -->
+    <div class="force">
+    <apex:form id="theform">
+
+    <div class="page-header">
+        <h2>Add/Remove Configuration</h2>
+    </div>
+
+    <div class="row extraspacing">
+            <apex:pageMessages />
+    </div>
+  
+    <p />
+  
+    <apex:commandButton value="Add Configuration" action="{!executeConfig}" />
+    
+    <p />
+    
+    <apex:commandButton value="Remove Configuration" action="{!removeConfig}" />
+    
+  </apex:form>
+  </div>
+  
+</apex:page>

@@ -1,0 +1,12 @@
+<apex:page >
+	<apex:outputLabel value="{!$Label.Closed_Funded_Label}" rendered="false"/>
+	<apex:outputLabel value="{!$Label.Closing_Label}" rendered="false"/>
+	<apex:outputLabel value="{!$Label.Compliance_Label}" rendered="false"/>
+	<apex:outputLabel value="{!$Label.Credit_Review_Label}" rendered="false"/>
+	<apex:outputLabel value="{!$Label.Hold_Label}" rendered="false"/>
+	<apex:outputLabel value="{!$Label.Proposal_Label}" rendered="false"/>
+	<apex:outputLabel value="{!$Label.Qualification_Label}" rendered="false"/>
+	<apex:outputLabel value="{!$Label.Underwriting_Label}" rendered="false"/>
+	<apex:outputLabel value="{!$Label.Withdrawn_Label}" rendered="false"/>
+	<apex:outputLabel value="{!$Label.Acceptance_Label}" rendered="false"/>
+</apex:page>

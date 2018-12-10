@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RemoteSiteSetting xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is the URL to the current Salesforce instance. The endpoint is required for the Salesforce visual Flow rules engine to function with the nCino product.</description>
+    <disableProtocolSecurity>false</disableProtocolSecurity>
+    <isActive>true</isActive>
+    <url>https://llc-bi.naXX.visual.force.com</url>
+</RemoteSiteSetting>

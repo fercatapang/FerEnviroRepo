@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomSite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowHomePage>false</allowHomePage>
+    <allowStandardAnswersPages>false</allowStandardAnswersPages>
+    <allowStandardIdeasPages>false</allowStandardIdeasPages>
+    <allowStandardLookups>false</allowStandardLookups>
+    <allowStandardSearch>false</allowStandardSearch>
+    <authorizationRequiredPage>nPortal__PortalLogin</authorizationRequiredPage>
+    <bandwidthExceededPage>BandwidthExceeded</bandwidthExceededPage>
+    <changePasswordPage>nPortal__PortalChangePassword</changePasswordPage>
+    <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
+    <fileNotFoundPage>FileNotFound</fileNotFoundPage>
+    <forgotPasswordPage>nPortal__PortalForgotPassword</forgotPasswordPage>
+    <genericErrorPage>Exception</genericErrorPage>
+    <inMaintenancePage>nPortal__PortalLogin</inMaintenancePage>
+    <inactiveIndexPage>nPortal__PortalLogin</inactiveIndexPage>
+    <indexPage>nPortal__OnlineApplication</indexPage>
+    <masterLabel>Customer Portal</masterLabel>
+    <requireHttps>true</requireHttps>
+    <requireInsecurePortalAccess>false</requireInsecurePortalAccess>
+    <selfRegPage>nPortal__SelfRegistration</selfRegPage>
+    <siteAdmin>skyler.pullum.89ehzfc4ake4.kljhv49egtkv@89partnertraining.com</siteAdmin>
+    <siteType>ChatterNetwork</siteType>
+    <subdomain>ncinopartnertraining-164d2f1-166cdbc1d41</subdomain>
+    <urlPathPrefix>customers</urlPathPrefix>
+</CustomSite>

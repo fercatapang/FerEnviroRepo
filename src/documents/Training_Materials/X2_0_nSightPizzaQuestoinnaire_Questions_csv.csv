@@ -1,0 +1,9 @@
+nFORCE__Form_Type__c,nFORCE__Group__c,nFORCE__Is_Required__c,nFORCE__Label__c,nFORCE__Order__c,nFORCE__lookupKey__c
+Text,8743873276,TRUE,What's the name associated to the order?,0,87943298
+Picklist,8743873276,TRUE,Is this for Pick-up or Delivery?,1,87943318
+Picklist,8743873276,TRUE,What type of Pizza would you like?,2,87943338
+Text,8743873276,FALSE,Any Special Instructions?,3,87943358
+Picklist,8743873276,FALSE,Choose Your First Topping,4,87943378
+Picklist,8743873276,FALSE,Choose your Second Topping,5,87943398
+Picklist,8743873276,TRUE,How will you be paying for your order?,6,87943418
+Text,8743873276,TRUE,Would you like to add a tip?,7,87943438

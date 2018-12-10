@@ -1,0 +1,92 @@
+<apex:page sidebar="false">
+	<apex:includeScript value="{!URLFOR($Resource.nFORCE__angularJS, '/angularJS/angular-1.5.7/angular.min.js')}" />
+	<nFORCE:ncDataProvidersIncludes />
+	<nFORCE:ncUIIncludes />
+	<nFORCE:ncPubsubIncludes />
+	<apex:includeScript value="{!URLFOR($Resource.ncTemplateGenerator, 'application/App.js')}" />
+	<apex:includeScript value="{!URLFOR($Resource.ncTemplateGenerator, 'application/Bootstrap.js')}" />
+	<apex:includeScript value="{!URLFOR($Resource.ncTemplateGenerator, 'controllers/TemplateGeneratorController.js')}" />
+	<apex:includeScript value="{!URLFOR($Resource.ncTemplateGenerator, 'services/TemplateGeneratorService.js')}" />
+	<apex:includeScript value="{!URLFOR($Resource.ncTemplateGenerator, 'services/MetadataService.js')}" />
+	<apex:includeScript value="{!URLFOR($Resource.jsforce)}" />
+	<c:UITemplateGeneratorConfiguration />
+
+	<div ng-app="ncTemplateGenerator" ng-controller="TemplateGeneratorController" ng-cloak="ngCloak">
+		<apex:composition template="nFORCE__Template_Heading">
+			<apex:define name="left">
+				<span>{{::labels.UI_Template_Generator_Header}}</span>
+			</apex:define>
+		</apex:composition>
+		<apex:composition template="nFORCE__Template_View_1_Column">
+			<apex:define name="column-content">
+				<apex:composition template="nFORCE__Template_View_Container">
+					<apex:define name="content">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-xs-12">
+									<div ng-show="successes != undefined && successes.length > 0" class="slds-box slds-theme--success">
+										{{::labels.UI_Template_Generator_Success_Message}}
+										<ul style="padding-left: 10px; list-style: initial;">
+											<li ng-repeat="success in successes">
+												{{success}}
+											</li>
+										</ul>
+									</div>
+									<div ng-show="failures != undefined && failures.length > 0" class="slds-box slds-theme--warning">
+										{{::labels.UI_Template_Generator_Error_Message}}
+										<ul style="padding-left: 10px; list-style: initial;">
+											<li ng-repeat="failure in failures">
+												{{failure}}
+											</li>
+										</ul>
+										<p>{{::labels.UI_Template_Generator_Error_Reason}}</p>
+										{{error}}
+									</div>
+									{{::labels.UI_Template_Generator_Help_Text}}
+									<br/>
+									<br/>
+									<div class="row">
+										<div class="col-xs-6">
+											<picklist-table
+												publish-topic="{{publishTopic}}"
+												select-text="{{selectText}}"
+												elements="config.sObjects"
+												display-columns="displayedColumns"
+												headers="headers">
+											</picklist-table>
+										</div>
+									</div>
+									<br/>
+									<div class="row">
+										<div class="col-xs-12">
+											<div>
+												<label>{{::labels.Include_Secondary_Routes}}
+												</label>
+											</div>
+											<input type="checkbox" ng-model="includeSecondaryNav" />
+										</div>
+									</div>
+									<div class="row slds-p-top--x-small slds-p-bottom--xx-small">
+										<div class="col-xs-6">
+											<a href="{!URLFOR($Resource.ncTemplateGenerator, 'images/tertiary_only.png')}" target="_blank">
+												{{::labels.Tertiary_Only_Page_Template_Example}}
+											</a>
+										</div>
+									</div>
+									<div class="row slds-p-bottom--x-small">
+										<div class="col-xs-6">
+											<a href="{!URLFOR($Resource.ncTemplateGenerator, 'images/secondary_and_tertiary.png')}" target="_blank">
+												{{::labels.Standard_Ncino_UI_Template_Example}}
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<button ng-click="generateTemplates()" class="slds-button slds-button--brand">{{::labels.Generate}}</button>
+					</apex:define>
+				</apex:composition>
+			</apex:define>
+		</apex:composition>
+	</div>
+</apex:page>

@@ -1,0 +1,33 @@
+nFORCE__Label__c,nFORCE__lookupKey__c,nFORCE__Order__c,nFORCE__Question__r.nFORCE__lookupKey__c
+Pick-Up,55559980,1,87943318
+Delivery ($5 Delivery Charge),55560000,2,87943318
+"Meat Lovers (Pepperoni, Sausage, Smoked Bacon, Canadian Bacon, Ham)",55560020,1,87943338
+"Supreme (Pepperoni, Sausage, Green Pepper, Mushrooms, Onions, Olives)",55560040,2,87943338
+"Vegetarian (Spinach, Green Peppers, Mushrooms, Onions, Olives)",55560060,3,87943338
+"Greek (Spinach, Mushroom, Feta Cheese)",55560080,4,87943338
+Cheese,55560100,5,87943338
+Custom (Two Toppings),55560120,6,87943338
+Pepperoni,55560140,1,87943378
+Sausage,55560160,2,87943378
+Ham,55560180,3,87943378
+Smoked Bacon,55560200,4,87943378
+Canadian Bacon,55560220,5,87943378
+Mushrooms,55560240,6,87943378
+Spinach,55560260,7,87943378
+Onions,55560280,8,87943378
+Olives,55560300,9,87943378
+Extra Cheese,55560320,10,87943378
+Pepperoni,55560340,1,87943398
+Sausage,55560360,2,87943398
+Ham,55560380,3,87943398
+Smoked Bacon,55560400,4,87943398
+Canadian Bacon,55560420,5,87943398
+Mushrooms,55560440,6,87943398
+Spinach,55560460,7,87943398
+Onions,55560480,8,87943398
+Olives,55560500,9,87943398
+Extra Cheese,55560520,10,87943398
+Debit,55560540,1,87943418
+"Credit (Visa, Mastercard, American Express)",55560560,2,87943418
+Bitcoins,55560580,3,87943418
+Cash,55560600,4,87943418

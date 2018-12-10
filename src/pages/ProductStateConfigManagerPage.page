@@ -1,0 +1,185 @@
+<apex:page id="thepage" controller="ProductStateConfigManager" action="{!autoSetup}">
+
+    <nDESIGN:Includes enableBootstrap3="true" enableBS3Namespace="true" enableFontAwesome="true" />
+
+    <div class="force">
+    <!-- <nDESIGN:Navigation currentAppName="Bankr_Base_Installation" /> -->
+    <apex:form id="theform">
+
+    <div class="page-header">
+        <h2>Product Stage Configuration Cloner and Removal Tool</h2>
+    </div>
+    
+    <div class="row extraspacing">
+            <apex:pageMessages />
+    </div>
+
+    <!-- Copy to all PSCs with a single source -->
+    <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title"><b>Copy PSCs to All Product Types</b></h3></div>
+    <div class="panel-body">
+        <div class="col-xs-12 bs-section">  
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-horizontal">
+                    <div class="form-group spacing">
+                        <label class="col-sm-2 control-label text-right align">Source Product Type LookupKey</label>
+                        <div class="col-sm-10">
+                            <apex:inputText value="{!sourcePTGS}" styleClass="form-control"/>  
+                        </div>
+                    </div>                                     
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <apex:commandButton value="Copy to All PSCs" action="{!insertPSCs}" status="generatestatus" reRender="theform" styleClass="btn btn-primary generate">
+                                <apex:actionStatus id="generatestatus">
+                                    <apex:facet name="start">
+                                        <img src="/img/loading.gif"/>
+                                    </apex:facet>
+                                </apex:actionStatus>
+                            </apex:commandButton>
+                            &nbsp;&nbsp;&nbsp;
+                            <!-- <apex:commandLink action="/{!theID}" value="{!$Label.RRR_Cancel_Link_Label}"></apex:commandLink> -->
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+        </div>    
+        </div> 
+        <a href="#" class="pull-right" data-toggle="tooltip" data-placement="left" title="Use this option if you have set up one Product Type with PSC records, and would like to copy them to all other Product Types.  Specify a single source Product Type lookupKey.">Help</a>  
+    </div>
+    </div>
+
+    <!-- Copy to specified targets/PSCs with a single source -->
+    <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title"><b>Copy PSCs to Specified Targets</b></h3></div>
+    <div class="panel-body">
+        <div class="col-xs-12 bs-section">  
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-horizontal">
+                    <div class="form-group spacing">
+                        <label class="col-sm-2 control-label text-right align">Source Product Type LookupKey</label>
+                        <div class="col-sm-10">
+                            <apex:inputText value="{!sourcePT2GS}" styleClass="form-control"/>  
+                        </div>
+                    </div>
+                    <div class="form-group spacing">
+                        <label class="col-sm-2 control-label text-right align">Specify Target Product Type LookupKey(s)</label>
+                        <div class="col-sm-10">
+                            <apex:inputText value="{!targetPTGS}" styleClass="form-control"/>  
+                        </div>
+                    </div>                                        
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <apex:commandButton value="Copy to Specified PSCs" action="{!insertSpecifiedPSCs}" status="generatestatus2" reRender="theform" styleClass="btn btn-primary generate">
+                                <apex:actionStatus id="generatestatus2">
+                                    <apex:facet name="start">
+                                        <img src="/img/loading.gif"/>
+                                    </apex:facet>
+                                </apex:actionStatus>
+                            </apex:commandButton>
+                            &nbsp;&nbsp;&nbsp;
+                            <!-- <apex:commandLink action="/{!theID}" value="{!$Label.RRR_Cancel_Link_Label}"></apex:commandLink> -->
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+        </div>    
+        </div>
+        <a href="#" class="pull-right" data-toggle="tooltip" data-placement="left" title="Use this option if you have set up one Product Type with PSC records, and would like to copy them to specific Product Types.  Specify comma-separated Product Type lookupKeys.">Help</a>  
+    </div>
+    </div>
+
+    <!-- Remove specified target PSCs -->
+    <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title"><b>Remove PSCs from Specified Product Types</b></h3></div>
+    <div class="panel-body">
+        <div class="col-xs-12 bs-section">  
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-horizontal">
+                    <div class="form-group spacing">
+                        <label class="col-sm-2 control-label text-right align">Specify Deletion Target Product Type LookupKey(s)</label>
+                        <div class="col-sm-10">
+                            <apex:inputText value="{!deletionTargetPTGS}" styleClass="form-control"/>  
+                        </div>
+                    </div>                                     
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <apex:commandButton value="Remove Specified PSCs" action="{!removeSpecifiedPSCs}" status="generatestatus3" reRender="theform" styleClass="btn btn-primary generate">
+                                <apex:actionStatus id="generatestatus3">
+                                    <apex:facet name="start">
+                                        <img src="/img/loading.gif"/>
+                                    </apex:facet>
+                                </apex:actionStatus>
+                            </apex:commandButton>
+                            &nbsp;&nbsp;&nbsp;
+                            <!-- <apex:commandLink action="/{!theID}" value="{!$Label.RRR_Cancel_Link_Label}"></apex:commandLink> -->
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+        </div>    
+        </div>
+        <a href="#" class="pull-right" data-toggle="tooltip" data-placement="left" title="Use this option if you want to specify Product Types from which to remove PSC records.  Specify comma-separated Product Type lookupKeys.">Help</a>
+    </div>
+    </div>
+
+    <!-- Remove PSCs but specify exclusions -->
+    <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title"><b>Specify PSCs to Retain and Delete All Others</b></h3></div>
+    <div class="panel-body">
+        <div class="col-xs-12 bs-section">  
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-horizontal">
+                    <div class="form-group spacing">
+                        <label class="col-sm-2 control-label text-right align">Specify Product Type LookupKey(s) of PSCs to Retain</label>
+                        <div class="col-sm-10">
+                            <apex:inputText value="{!retainedPTGS}" styleClass="form-control"/>  
+                        </div>
+                    </div>                                       
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <apex:commandButton value="Remove Unspecified PSCs" action="{!removeOtherPSCs}" status="generatestatus4" reRender="theform" styleClass="btn btn-primary generate">
+                                <apex:actionStatus id="generatestatus4">
+                                    <apex:facet name="start">
+                                        <img src="/img/loading.gif"/>
+                                    </apex:facet>
+                                </apex:actionStatus>
+                            </apex:commandButton>
+                            &nbsp;&nbsp;&nbsp;
+                            <!-- <apex:commandLink action="/{!theID}" value="{!$Label.RRR_Cancel_Link_Label}"></apex:commandLink> -->
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+        </div>    
+        </div>
+        <a href="#" class="pull-right" data-toggle="tooltip" data-placement="left" title="Use this option if you want to specify PSC records to keep, while removing all others.  Specify comma-separated Product Type lookupKeys.  If left blank, *ALL* PSCs will be removed!">Help</a>       
+    </div>
+    </div>
+    
+    <!-- Existing Product Types list -->
+    <div class="panel panel-info">
+    <div class="panel-heading"><h3 class="panel-title"><b>Current Product Types</b></h3></div>
+    <!-- <div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Current Product Types</h3></div> -->
+    <div class="panel-body">
+    
+    <apex:pageBlock id="pgbk6" mode="maindetail">
+        <apex:dataTable value="{!productTypesGS}" var="d" styleClass="table table-bordered">
+            <apex:column value="{!d.Name}" headerValue="Product Type Name"/>
+            <apex:column value="{!d.LLC_BI__lookupKey__c}" headerValue="Product Type lookupKey"/>
+            <apex:column value="{!d.LLC_BI__Product_State_Closed_Config_Count__c}" headerValue="No. Closed PSCs"/>
+            <apex:column value="{!d.LLC_BI__Product_State_Booked_Config_Count__c}" headerValue="No. Booked PSCs"/>
+            <apex:column headerValue="Product Type Link">
+                <apex:outputLink value="/{!d.ID}" target="_blank">View Product Type</apex:outputLink>
+            </apex:column>
+        </apex:dataTable>
+    </apex:pageBlock>
+    </div>
+    </div>  
+       
+    </apex:form>
+    </div>
+</apex:page>

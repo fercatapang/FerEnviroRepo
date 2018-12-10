@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Acceptance_Label</fullName>
+        <categories>Process Overview</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Acceptance</shortDescription>
+        <value>Acceptance</value>
+    </labels>
+    <labels>
+        <fullName>Closed_Funded_Label</fullName>
+        <categories>Process Overview</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Closed Funded Label</shortDescription>
+        <value>Closed</value>
+    </labels>
+    <labels>
+        <fullName>Closing_Label</fullName>
+        <categories>Process Overview</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Closing Label</shortDescription>
+        <value>Closing</value>
+    </labels>
+    <labels>
+        <fullName>Compliance_Label</fullName>
+        <categories>Process Overview</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Compliance Label</shortDescription>
+        <value>Compliance</value>
+    </labels>
+    <labels>
+        <fullName>Credit_Review_Label</fullName>
+        <categories>Process Overview</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Credit Review Label</shortDescription>
+        <value>Credit</value>
+    </labels>
+    <labels>
+        <fullName>Default_App_Field</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Used in success and failure messages in UI Template Generator</shortDescription>
+        <value>Default App Field</value>
+    </labels>
+    <labels>
+        <fullName>Default_App_Field_Already_Exists</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Used in failure message in UI Template Generator</shortDescription>
+        <value>Default App Field already exists</value>
+    </labels>
+    <labels>
+        <fullName>Generate</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button label in UI Template Generator</shortDescription>
+        <value>Generate</value>
+    </labels>
+    <labels>
+        <fullName>Group_With_Name</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Used in success message in UI Template Generator</shortDescription>
+        <value>Group with name:</value>
+    </labels>
+    <labels>
+        <fullName>Hold_Label</fullName>
+        <categories>Process Overview</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Hold Label</shortDescription>
+        <value>Hold</value>
+    </labels>
+    <labels>
+        <fullName>Include_Secondary_Routes</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Checkbox label on UI Template Generator page</shortDescription>
+        <value>Include Left Navigation</value>
+    </labels>
+    <labels>
+        <fullName>Object</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>UI Template Generator Object picklist header</shortDescription>
+        <value>Object</value>
+    </labels>
+    <labels>
+        <fullName>Picklist_Header_Namespace</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>UI Template Generator Namespace picklist header</shortDescription>
+        <value>Namespace</value>
+    </labels>
+    <labels>
+        <fullName>Proposal_Label</fullName>
+        <categories>Process Overview</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Proposal Label</shortDescription>
+        <value>Proposal</value>
+    </labels>
+    <labels>
+        <fullName>Qualification_Label</fullName>
+        <categories>Process Overview</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Qualification Label</shortDescription>
+        <value>Qualification</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Account_Error_Msg</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Account Error Msg</shortDescription>
+        <value>Please Ensure an Account is selected</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Account_Title</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Account Title</shortDescription>
+        <value>Account</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Back_To_Button</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Back To Button</shortDescription>
+        <value>Back to</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Config_Instructions</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Config Instructions</shortDescription>
+        <value>Click on the Install or uninstall button to install Routes for use in new UI for Risk Rating Selector</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Configuration</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Configuration</shortDescription>
+        <value>Risk Rating Selector Configuration</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Finish</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Finish</shortDescription>
+        <value>Finish</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Install</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Install</shortDescription>
+        <value>Install</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Loan_Title</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Loan Title</shortDescription>
+        <value>Loan</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Save_Button</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Save Button</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Save_URL_UI</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Save URL UI</shortDescription>
+        <value>/apex/LLC_BI__Loan?app=loan.risk-rating&amp;id=</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Success_Install</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Success Install</shortDescription>
+        <value>Successfully Installed!</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Success_Uninstall</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Success Uninstall</shortDescription>
+        <value>Successfully Uninstalled!</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Template_Error_Msg</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Template Error Msg</shortDescription>
+        <value>Please Ensure a Template is selected</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Title</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Title</shortDescription>
+        <value>Risk Rating Selector</value>
+    </labels>
+    <labels>
+        <fullName>Risk_Rating_Selector_Uninstall</fullName>
+        <categories>Risk Rating Selector</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Risk Rating Selector Uninstall</shortDescription>
+        <value>Uninstall</value>
+    </labels>
+    <labels>
+        <fullName>Route_Configuration</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Used in failure message in UI Template Generator</shortDescription>
+        <value>Route configuration</value>
+    </labels>
+    <labels>
+        <fullName>Route_With_Name</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Used in success message in UI Template Generator</shortDescription>
+        <value>Route with name:</value>
+    </labels>
+    <labels>
+        <fullName>Standard_Ncino_UI_Template_Example</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Link text on UI Template Generator page</shortDescription>
+        <value>Left Navigation Included Example (Checked Box)</value>
+    </labels>
+    <labels>
+        <fullName>Tertiary_Only_Page_Template_Example</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Link text on UI Template Generator page</shortDescription>
+        <value>Subnavigation Only Example (Unchecked Box)</value>
+    </labels>
+    <labels>
+        <fullName>UI_Template_Generator_Error_Message</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Success message shown in UI Template Generator</shortDescription>
+        <value>Oops! Unfortunately we were unable to generate the following components:</value>
+    </labels>
+    <labels>
+        <fullName>UI_Template_Generator_Error_Reason</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Success message shown in UI Template Generator</shortDescription>
+        <value>This is the error that was thrown:</value>
+    </labels>
+    <labels>
+        <fullName>UI_Template_Generator_Header</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Header shown in UI Template Generator</shortDescription>
+        <value>UI Generator</value>
+    </labels>
+    <labels>
+        <fullName>UI_Template_Generator_Help_Text</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Help text shown in UI Template Generator</shortDescription>
+        <value>To create a Visualforce page, select an object from the list below and click Generate. Once generated, the Visualforce page will be available to add to the object&apos;s page layout. To include left navigation, select the checkbox. Otherwise, only subnavigation displays.</value>
+    </labels>
+    <labels>
+        <fullName>UI_Template_Generator_Success_Message</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Success message shown in UI Template Generator</shortDescription>
+        <value>Success! You&apos;ve successfully generated the following components:</value>
+    </labels>
+    <labels>
+        <fullName>Underwriting_Label</fullName>
+        <categories>Process Overview</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Underwriting Label</shortDescription>
+        <value>Underwriting</value>
+    </labels>
+    <labels>
+        <fullName>Visualforce_Page</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Used in success and failure messages in UI Template Generator</shortDescription>
+        <value>Visualforce Page</value>
+    </labels>
+    <labels>
+        <fullName>Visualforce_Page_Generator</fullName>
+        <categories>UI Template Generator</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>UI Template Generator route name</shortDescription>
+        <value>UI Generator</value>
+    </labels>
+    <labels>
+        <fullName>Withdrawn_Label</fullName>
+        <categories>Process Overview</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Withdrawn Label</shortDescription>
+        <value>Withdrawn</value>
+    </labels>
+</CustomLabels>
