@@ -11,6 +11,7 @@
     </types>
     <types>
         <members>*</members>
+        <members>AnswersHome</members>
         <name>ApexPage</name>
     </types>
     <types>
