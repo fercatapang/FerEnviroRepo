@@ -60,6 +60,10 @@
         <name>CustomApplicationComponent</name>
     </types>
     <types>
+        <members>LLC_BI__Loan__c.AutoRabitID__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
         <members>*</members>
         <name>CustomLabels</name>
     </types>
