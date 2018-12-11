@@ -3,6 +3,7 @@
     <version>44.0</version>
     <types>
         <members>*</members>
+        <members>LLC_BI__ALoanConfig</members>
         <name>ApexClass</name>
     </types>
     <types>
