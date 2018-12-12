@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>AutorabitExtId__c</fullName>
+        <displayFormat>G - {00000}</displayFormat>
+        <externalId>true</externalId>
+        <label>AutorabitExtId</label>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+</CustomObject>

@@ -61,6 +61,9 @@
     </types>
     <types>
         <members>LLC_BI__Loan__c.AutoRabitID__c</members>
+        <members>nFORCE__Group__c.AutorabitExtId__c</members>
+        <members>nFORCE__Route_Group__c.AutorabitExtId__c</members>
+        <members>nFORCE__Route__c.AutorabitExtId__c</members>
         <name>CustomField</name>
     </types>
     <types>
