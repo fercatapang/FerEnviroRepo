@@ -2,7 +2,7 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
         <fullName>AutoRabitID__c</fullName>
-        <description>This is a test for AutoRabit</description>
+        <description>This is a test for AutoRabit 1.0</description>
         <externalId>false</externalId>
         <label>AutoRabitID</label>
         <length>25</length>
